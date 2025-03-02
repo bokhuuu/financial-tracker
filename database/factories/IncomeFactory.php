@@ -13,7 +13,6 @@ class IncomeFactory extends Factory
     {
         return [
             'user_id' => User::inRandomOrder()->first()->id,
-            'category_id' => Category::inRandomOrder()->first()->id,
             'date' => $this->faker->date(),
             'amount' => $this->faker->randomFloat(2, 1, 1000),
             'description' => $this->faker->sentence(),
