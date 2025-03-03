@@ -1,13 +1,20 @@
-<ul>
-    @foreach ($incomes as $income)
-        <li>{{ $income->date }} - ${{ $income->amount }} - {{ $income->description }}</li>
-    @endforeach
-</ul>
+@extends('layout')
 
-@if (request('month') && request('year'))
-    <p>Filtered Total: ${{ $filteredTotalIncome }}</p>
-@elseif (request('year'))
-    <p>Filtered Total: ${{ $filteredTotalIncome }}</p>
-@endif
+@section('content')
+    <div class="flex">
+        <ul>
+            @foreach ($incomes as $income)
+                <li>{{ $income->date }} - ${{ $income->amount }} - {{ $income->description }}</li>
+            @endforeach
+        </ul>
 
-<p>Total: {{ $totalIncome }}</p>
+        @if (request('month') && request('year'))
+            <p>Filtered Total: ${{ $filteredTotalIncome }}</p>
+        @elseif (request('year'))
+            <p>Filtered Total: ${{ $filteredTotalIncome }}</p>
+        @endif
+
+        <p>Total: {{ $totalIncome }}</p>
+
+    </div>
+@endsection

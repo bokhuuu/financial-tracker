@@ -33,10 +33,7 @@ class IncomeController extends Controller
     }
 
 
-    public function store(Request $request)
-    {
-        $request->validate();
-    }
+    public function store(Request $request) {}
 
 
     public function edit(Income $income)
