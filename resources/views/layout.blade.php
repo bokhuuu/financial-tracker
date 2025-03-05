@@ -14,25 +14,27 @@
 <body class="flex justify-center mt-10 bg-gray-300">
     <div class="text-center p-3 bg-white rounded-lg w-[90%] sm:max-w-md md:max-w-lg lg:max-w-xl">
 
-        <h1 class="text-md text-xl sm:text-3xl font-semibold text-gray-500">Manage Personal Expenses</h1>
+        <h1 class="text-md text-2xl sm:text-3xl mb-3 mt-4 text-blue-400
+            hover:font-extrabold">
+            <a href="{{ route('dashboard') }}"><strong>Manage Expenses</strong></a>
+        </h1>
 
-        <ul class="flex justify-center items-center space-x-2">
+        <ul class="flex justify-between items-center pl-2 pr-5 pt-3">
             @auth
                 <li class="text-gray-600">
 
-                    <span class="font-bold text-gray-700 text-lg ml-2 mr-2">
+                    <span class="font-bold text-gray-700 text-sm">
                         {{ auth()->user()->name }}
                     </span>
                 </li>
-                <span> | </span>
                 <form action="{{ route('logout.user') }}" method="POST">
                     @csrf
-                    <button type="submit" class="text-gray-600 hover:text-blue-500">Logout</button>
+                    <button type="submit" class="text-blue-500 hover:underline font-semibold">Logout</button>
                 </form>
             @else
-                <li><a href="{{ route('register.user') }}" class="text-gray-600 hover:text-blue-500">Register</a></li>
-                <span> | </span>
-                <li><a href="{{ route('login.user') }}" class="text-gray-600 hover:text-blue-500">Login</a></li>
+                <li><a href="{{ route('register.user') }}" class="text-blue-500 hover:underline font-semibold">Register</a>
+                </li>
+                <li><a href="{{ route('login.user') }}" class="text-blue-500 hover:underline font-semibold">Login</a></li>
             @endauth
         </ul>
         </nav>
@@ -53,8 +55,6 @@
             @yield('content')
         </div>
     </div>
-
-
 
 </body>
 

@@ -33,7 +33,7 @@
                     @enderror
                 </div>
 
-                <button type="submit">Register</button>
+                <button type="submit" class="text-blue-500 hover:font-extrabold font-semibold">Register</button>
             </form>
         </div>
     @endsection

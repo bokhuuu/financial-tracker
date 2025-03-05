@@ -13,7 +13,7 @@
                 <input type="password" name="password" placeholder="Password" required>
             </div>
 
-            <button type="submit">Login</button>
+            <button type="submit" class="text-blue-500 hover:font-extrabold font-semibold">Login</button>
         </form>
     </div>
 @endsection

@@ -22,7 +22,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('incomes.index')
+            return redirect()->route('dashboard')
                 ->with('success', 'Logged in');
         } else {
             return redirect()->route('login.form')
@@ -36,7 +36,7 @@ class LoginController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('login.form')
+        return redirect()->route('dashboard')
             ->with('success', 'Logged out');
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,10 +28,12 @@ Route::post('/logout', [LoginController::class, 'logoutUser'])
     ->middleware('auth');
 
 
-
 Route::resource('categories', CategoryController::class)
     ->only(['index', 'show']);
 
 
 Route::resource('incomes', IncomeController::class)
-    ->except(['show']);
+    ->only(['index', 'destroy']);
+
+Route::get('dashboard', DashboardController::class)
+    ->name('dashboard');
