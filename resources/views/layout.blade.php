@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Manage Personal Expenses</title>
+    <title>Finances Manager</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
@@ -14,18 +14,19 @@
 <body class="flex justify-center mt-10 bg-gray-300">
     <div class="text-center p-3 bg-white rounded-lg w-[90%] sm:max-w-md md:max-w-lg lg:max-w-xl">
 
-        <h1 class="text-md text-2xl sm:text-3xl mb-3 mt-4 text-blue-400
-            hover:font-extrabold">
-            <a href="{{ route('dashboard') }}"><strong>Manage Expenses</strong></a>
+        <h1 class="text-md text-2xl sm:text-3xl mb-3 mt-4 text-gray-700">
+            <strong>Finances Manager</strong>
+            <hr class="border-dotted-4 bg-slate-300 my-4">
+
         </h1>
 
         <ul class="flex justify-between items-center pl-2 pr-5 pt-3">
             @auth
                 <li class="text-gray-600">
 
-                    <span class="font-bold text-gray-700 text-sm">
+                    <a href="{{ route('dashboard') }}" class="text-blue-500 hover:underline font-semibold">
                         {{ auth()->user()->name }}
-                    </span>
+                    </a>
                 </li>
                 <form action="{{ route('logout.user') }}" method="POST">
                     @csrf

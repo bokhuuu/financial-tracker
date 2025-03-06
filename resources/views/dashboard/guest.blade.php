@@ -33,7 +33,7 @@
 
     <h1 class="m"></h1>
     <p class="italic">
-        Filter incomes and expenses by year.
-        View your total balance, see the filtered sums of income and expenses.
+        Filter incomes and expenses by year. Expenses can be filtered by year, category, or both.
+        View your total balance and see the filtered sums of income and expenses based on your selected filters.
     </p>
 @endsection

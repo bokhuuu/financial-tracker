@@ -12,14 +12,15 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+
+        User::factory(20)->create();
+
         $categories = [
             'Food',
             'Transportation',
             'Entertainment',
             'Health',
             'Education',
-            'Shopping',
-            'Piggy Bank'
         ];
 
         foreach ($categories as $category) {
@@ -27,7 +28,6 @@ class DatabaseSeeder extends Seeder
         }
 
 
-        // User::factory(20)->create();
         Income::factory(50)->create();
         Expense::factory(50)->create();
     }

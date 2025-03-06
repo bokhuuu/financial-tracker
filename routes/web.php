@@ -5,11 +5,11 @@ use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\Auth\RegistrationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExpenseController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('layout');
-});
+
+Route::redirect('/', '/dashboard');
 
 Route::get('/register', [RegistrationController::class, 'registrationForm'])
     ->name('register.form');
@@ -28,12 +28,18 @@ Route::post('/logout', [LoginController::class, 'logoutUser'])
     ->middleware('auth');
 
 
-Route::resource('categories', CategoryController::class)
-    ->only(['index', 'show']);
+Route::get('dashboard', DashboardController::class)
+    ->name('dashboard');
 
 
 Route::resource('incomes', IncomeController::class)
     ->only(['index', 'destroy']);
 
-Route::get('dashboard', DashboardController::class)
-    ->name('dashboard');
+
+Route::resource('expenses', ExpenseController::class)
+    ->only(['index', 'destroy']);
+
+
+Route::fallback(function () {
+    return redirect('/');
+});
