@@ -27,14 +27,14 @@
         <div>
             <p class="text-xl font-bold">Balance</p>
             <span class="font-semibold $ {{ $totalIncome - $totalExpenses < 0 ? 'text-red-500' : '' }}">
-                {{ $totalIncome - $totalExpenses }}
+                $ {{ $totalIncome - $totalExpenses }}
             </span>
         </div>
 
         <div>
             <p class="text-xl font-bold">Bank</p>
             <span class="font-semibold $ {{ $totalIncome - $totalExpenses < 0 ? 'text-red-500' : '' }}">
-                {{ $totalIncome - $totalExpenses }}
+                $ {{ $totalIncome - $totalExpenses }}
             </span>
         </div>
 

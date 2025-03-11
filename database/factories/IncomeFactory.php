@@ -14,7 +14,7 @@ class IncomeFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'date' => $this->faker->dateTimeBetween('2015-01-01', '2025-03-31')->format('Y-m-d'),
-            'amount' => $this->faker->randomFloat(2, 1, 1000),
+            'amount' => $this->faker->randomFloat(2, 100, 10000),
             'description' => $this->faker->sentence(),
         ];
     }

@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             'Education',
         ];
 
+        
         foreach ($categories as $category) {
             Category::create(['name' => $category]);
         }

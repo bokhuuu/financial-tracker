@@ -28,7 +28,7 @@
         <div class="mb-4">
             <label for="category" class="block font-thin mb-1 text-left">Category:</label>
             <select name="category_id" id="category"
-                class="w-full p-2 rounded-lg border @error('category_id') border-red-500 @enderror">
+                class="w-full p-2 pl-1 rounded-lg border @error('category_id') border-red-500 @enderror">
                 <option value="" disabled selected>Choose a category</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>

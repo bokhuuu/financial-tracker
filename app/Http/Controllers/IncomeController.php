@@ -36,7 +36,7 @@ class IncomeController extends Controller
         $request->validate([
             'amount' => 'required|numeric|min:1',
             'date' => 'required|date',
-            'description' => 'nullable|string|min:5|max:255'
+            'description' => 'required|string|min:5|max:255'
         ]);
 
         Income::create([

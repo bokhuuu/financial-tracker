@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Expense;
+use App\Models\Income;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,6 +47,16 @@ class ExpenseController extends Controller
             'category_id' => 'required|exists:categories,id',
             'description' => 'required|string|min:5|max:255'
         ]);
+
+        $totalIncome = Income::where('user_id', Auth::id())->sum('amount');
+        $totalExpense = Expense::where('user_id', Auth::id())->sum('amount');
+
+
+        if (($totalExpense + $request->amount) > $totalIncome) {
+            return redirect()->route('expenses.create')
+                ->with('error', "You cannot exceed yout total income: $ $totalIncome")
+                ->withInput();
+        }
 
         Expense::create([
             'user_id' => Auth::id(),
