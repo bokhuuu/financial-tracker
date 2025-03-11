@@ -37,7 +37,7 @@ Route::resource('incomes', IncomeController::class)
 
 
 Route::resource('expenses', ExpenseController::class)
-    ->only(['index', 'destroy']);
+    ->except(['edit', 'show']);
 
 
 Route::fallback(function () {

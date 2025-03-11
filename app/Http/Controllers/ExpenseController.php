@@ -31,6 +31,35 @@ class ExpenseController extends Controller
     }
 
 
+    public function create()
+    {
+        $categories = Category::all();
+        return view('expenses.create', compact('categories'));
+    }
+
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'amount' => 'required|numeric|min:1',
+            'date' => 'required|date',
+            'category_id' => 'required|exists:categories,id',
+            'description' => 'required|string|min:5|max:255'
+        ]);
+
+        Expense::create([
+            'user_id' => Auth::id(),
+            'category_id' => $request->category_id,
+            'amount' => $request->amount,
+            'date' => $request->date,
+            'description' => $request->description
+        ]);
+
+        return redirect()->route('expenses.index')
+            ->with('success', 'Expense added');
+    }
+
+
     public function destroy(Expense $expense)
     {
         $expense->delete();

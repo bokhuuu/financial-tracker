@@ -17,7 +17,7 @@
         <h1 class="text-md text-2xl sm:text-3xl mb-3 mt-4 text-gray-700">
             <a href="{{ route('dashboard') }}" class="text-blue-500 hover:underline font-semibold">
                 <strong>Financial Tracker</strong></a>
-            <hr class="border-dotted-4 bg-slate-300 my-4">
+            <hr class="border-t-4 bg-slate-300 my-3 rounded-4xl">
 
         </h1>
 
