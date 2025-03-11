@@ -33,7 +33,7 @@ Route::get('dashboard', DashboardController::class)
 
 
 Route::resource('incomes', IncomeController::class)
-    ->only(['index', 'destroy']);
+    ->except(['edit', 'show']);
 
 
 Route::resource('expenses', ExpenseController::class)

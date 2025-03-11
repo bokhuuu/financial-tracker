@@ -10,6 +10,13 @@ class Income extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'amount',
+        'description',
+        'date'
+    ];
+
 
     public function user(): BelongsTo
     {

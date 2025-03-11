@@ -6,8 +6,6 @@ use App\Models\Income;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use function view;
-
 class IncomeController extends Controller
 {
 
@@ -24,6 +22,32 @@ class IncomeController extends Controller
         $totalIncome = Income::where('user_id', Auth::id())->sum('amount');
 
         return view('incomes.index', compact('incomes', 'filteredTotalIncome', 'totalIncome'));
+    }
+
+
+    public function create()
+    {
+        return view('incomes.create');
+    }
+
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'amount' => 'required|numeric|min:1',
+            'date' => 'required|date',
+            'description' => 'nullable|string|min:5|max:255'
+        ]);
+
+        Income::create([
+            'user_id' => Auth::id(),
+            'amount' => $request->amount,
+            'date' => $request->date,
+            'description' => $request->description
+        ]);
+
+        return redirect()->route('incomes.index')
+            ->with('success', 'Income added');
     }
 
 

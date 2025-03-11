@@ -31,7 +31,7 @@ class RegistrationController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('incomes.index')
+        return redirect()->route('dashboard')
             ->with('success', 'Registered');
     }
 }

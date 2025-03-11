@@ -4,36 +4,41 @@
     <h1 class="font-bold text-lg italic"> Welcome to Dashboard</h1>
 
     @auth
-        <p class="italic">You are logged in to manage your finances</p>
+        <p class="italic">Manage your finances</p>
     @else
         <p class="italic">Please log in to manage your finances</p>
     @endauth
 
-    <div class="grid grid-cols-2 gap-10 mt-8 mb-10 bg-slate-300 p-4 rounded-2xl">
+    <div class="grid grid-cols-2 gap-10 mt-8 mb-8 bg-slate-300 p-4 rounded-xl">
 
         <div>
-            <p><span class=" border-slate-500 font-semibold">Incomes</span>
+            <p><span class="border-slate-500 text-xl font-bold">Incomes</span>
                 <br /> $ 0.00
             </p>
         </div>
 
         <div>
-            <p><span class=" border-slate-500 font-semibold">Expenses</span>
+            <p><span class="border-slate-500 text-xl font-bold">Expenses</span>
                 <br /> $ 0.00
             </p>
         </div>
 
 
-        <div class="col-span-2">
-            <p><span class=" border-slate-500 font-semibold">Balance</span>
+        <div>
+            <p><span class="border-slate-500 text-xl font-bold">Balance</span>
+                <br /> $ 0.00
+            </p>
+        </div>
+
+        <div>
+            <p><span class="border-slate-500 text-xl font-bold">Bank</span>
                 <br /> $ 0.00
             </p>
         </div>
     </div>
 
-    <h1 class="m"></h1>
     <p class="italic">
-        Filter incomes and expenses by year. Expenses can be filtered by year, category, or both.
-        View your total balance and see the filtered sums of income and expenses based on your selected filters.
+        View your incomes and expenses, along with your financial overview.
+        The Balance reflects your real-time active funds, while the Bank shows your accumulated savings.
     </p>
 @endsection

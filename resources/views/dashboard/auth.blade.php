@@ -4,38 +4,44 @@
     <h1 class="font-bold text-lg italic"> Welcome to Dashboard</h1>
 
     @auth
-        <p class="italic">You can manage your finances</p>
+        <p class="italic">Manage your finances</p>
     @else
         <p class="italic">Please log in to manage your finances</p>
     @endauth
 
-    <div class="grid grid-cols-2 gap-10 mt-8 mb-10 bg-slate-300 p-4 rounded-2xl">
-
+    <div class="grid grid-cols-2 gap-10 mt-8 mb-8 bg-slate-300 p-4 rounded-xl">
         <div>
             <p>
-                <a href="{{ route('incomes.index') }}" class="text-blue-500 hover:underline font-semibold">Incomes</a>
+                <a href="{{ route('incomes.index') }}" class="text-blue-500 text-xl font-bold hover:underline">Incomes</a>
                 <br /> $ {{ $totalIncome }}
             </p>
         </div>
 
         <div>
             <p>
-                <a href="{{ route('expenses.index') }}" class="text-blue-500 hover:underline font-semibold">Expenses</a>
+                <a href="{{ route('expenses.index') }}" class="text-blue-500 text-xl font-bold hover:underline">Expenses</a>
                 <br /> $ {{ $totalExpenses }}
             </p>
         </div>
 
-
-        <div class="col-span-2">
-            <h2 class="text-xl font-bold">Balance</h2>
+        <div>
+            <p class="text-xl font-bold">Balance</p>
             <span class="font-semibold $ {{ $totalIncome - $totalExpenses < 0 ? 'text-red-500' : '' }}">
                 {{ $totalIncome - $totalExpenses }}
             </span>
         </div>
+
+        <div>
+            <p class="text-xl font-bold">Bank</p>
+            <span class="font-semibold $ {{ $totalIncome - $totalExpenses < 0 ? 'text-red-500' : '' }}">
+                {{ $totalIncome - $totalExpenses }}
+            </span>
+        </div>
+
     </div>
 
     <p class="italic">
-        Filter incomes and expenses by year. Expenses can be filtered by year, category, or both.
-        View your total balance and see the filtered sums of income and expenses based on your selected filters.
+        View your incomes and expenses, along with your financial overview.
+        The Balance reflects your real-time active funds, while the Bank shows your accumulated savings.
     </p>
 @endsection
