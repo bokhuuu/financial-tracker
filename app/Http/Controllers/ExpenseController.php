@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\HighExpenseNotification;
 use App\Models\Category;
 use App\Models\Expense;
 use App\Models\Income;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ExpenseController extends Controller
 {
@@ -72,6 +74,10 @@ class ExpenseController extends Controller
             'savings' => $savings
         ]);
 
+        if ($expenseAmount > 1000) {
+            Mail::to(Auth::user()->email)->send(new HighExpenseNotification(Auth::user(), $expenseAmount, $savings));
+        }
+
         return redirect()->route('expenses.index')
             ->with('success', 'Expense added successfully');
     }
@@ -82,7 +88,11 @@ class ExpenseController extends Controller
         $deletedSavings = $expense->savings;
         $expense->delete();
 
+        $message = $deletedSavings > 0
+            ? "Expense deleted. Note: $deletedSavings was also deducted from your Piggy Bank."
+            : "Expense deleted.";
+
         return redirect()->route('expenses.index')
-            ->with('success', "Expense deleted. Note: $deletedSavings was also deducted from your Piggy Bank");
+            ->with('success', $message);
     }
 }
