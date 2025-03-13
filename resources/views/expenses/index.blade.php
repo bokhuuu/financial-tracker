@@ -39,13 +39,13 @@
         <div class="flex justify-between items-center">
             <button type="submit"
                 class="bg-blue-400 text-white mt-3 mb-1 font-semibold w-12 h-12 
-                    rounded-full flex items-center justify-center hover:bg-blue-300">
+                    rounded-full flex items-center justify-center hover:bg-blue-300 hover:text-white">
                 Filter
             </button>
             @auth
                 <a href="{{ route('expenses.create') }}"
                     class="bg-blue-400 text-white mt-3 mb-1 font-semibold w-12 h-12 
-                        rounded-full flex items-center justify-center hover:bg-blue-300">
+                        rounded-full flex items-center justify-center hover:bg-blue-300 hover:text-white">
                     Add
                 </a>
             @endauth
@@ -55,7 +55,7 @@
     <div class="text-left space-y-3">
         @foreach ($expenses as $expense)
             <li class="flex justify-between items-center">
-                {{ $expense->description }} <br /> $ {{ $expense->amount }}
+                {{ $expense->description }} <br /> {{ number_format($expense->amount, 2) }}
                 <form action="{{ route('expenses.destroy', $expense) }}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -67,7 +67,7 @@
         <div class="mt-5 bg  bg-gray-300 font-bold flex justify-center p-2 rounded-2xl">
             <span class="font-thin mr-3">
                 Sum of Expenses:
-            </span> $
+            </span>
             {{ number_format($filteredTotalExpense, 2) }}
         </div>
     </div>

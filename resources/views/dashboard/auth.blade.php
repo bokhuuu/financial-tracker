@@ -9,34 +9,35 @@
         <p class="italic">Please log in to manage your finances</p>
     @endauth
 
-    <div class="grid grid-cols-2 gap-10 mt-8 mb-8 bg-slate-300 p-4 rounded-xl">
+    <div class="grid grid-cols-2 gap-5 mt-8 mb-8 bg-slate-300 p-2 rounded-xl">
         <div>
             <p>
                 <a href="{{ route('incomes.index') }}" class="text-blue-500 text-xl font-bold hover:underline">Incomes</a>
-                <br /> $ {{ $totalIncome }}
+                <br /> {{ number_format($totalIncome, 2) }}
             </p>
         </div>
 
         <div>
             <p>
                 <a href="{{ route('expenses.index') }}" class="text-blue-500 text-xl font-bold hover:underline">Expenses</a>
-                <br /> $ {{ $totalExpenses }}
+                <br /> {{ number_format($totalExpenses, 2) }}
             </p>
         </div>
 
         <div>
             <p class="text-xl font-bold">Balance</p>
-            <span class="font-semibold $ {{ $totalIncome - $totalExpenses < 0 ? 'text-red-500' : '' }}">
-                $ {{ $totalIncome - $totalExpenses }}
+            <span class="font-semibold">
+                {{ number_format($availableBalance, 2) }}
             </span>
         </div>
 
         <div>
-            <p class="text-xl font-bold">Bank</p>
-            <span class="font-semibold $ {{ $totalIncome - $totalExpenses < 0 ? 'text-red-500' : '' }}">
-                $ {{ $totalIncome - $totalExpenses }}
+            <p class="text-xl font-bold">PiggyBank</p>
+            <span class="font-semibold">
+                {{ number_format($savingsBalance, 2) }}
             </span>
         </div>
+
 
     </div>
 

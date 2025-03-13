@@ -9,30 +9,30 @@
         <p class="italic">Please log in to manage your finances</p>
     @endauth
 
-    <div class="grid grid-cols-2 gap-10 mt-8 mb-8 bg-slate-300 p-4 rounded-xl">
+    <div class="grid grid-cols-2 gap-5 mt-8 mb-8 bg-slate-300 p-2 rounded-xl">
 
         <div>
             <p><span class="border-slate-500 text-xl font-bold">Incomes</span>
-                <br /> $ 0.00
+                <br /> 0.00
             </p>
         </div>
 
         <div>
             <p><span class="border-slate-500 text-xl font-bold">Expenses</span>
-                <br /> $ 0.00
+                <br /> 0.00
             </p>
         </div>
 
 
         <div>
             <p><span class="border-slate-500 text-xl font-bold">Balance</span>
-                <br /> $ 0.00
+                <br /> 0.00
             </p>
         </div>
 
         <div>
-            <p><span class="border-slate-500 text-xl font-bold">Bank</span>
-                <br /> $ 0.00
+            <p><span class="border-slate-500 text-xl font-bold">PiggyBank</span>
+                <br /> 0.00
             </p>
         </div>
     </div>

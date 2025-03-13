@@ -20,7 +20,7 @@ class ExpenseFactory extends Factory
         $maxExpenseAmount = max(1, $totalIncome - $totalExpenses);
 
         return [
-            'user_id' => User::inRandomOrder()->first()->id,
+            'user_id' => $user->id,
             'category_id' => Category::inRandomOrder()->first()->id,
             'date' => $this->faker->dateTimeBetween('2015-01-01', '2025-03-31')->format('Y-m-d'),
             'amount' => $this->faker->randomFloat(2, 1, $maxExpenseAmount),

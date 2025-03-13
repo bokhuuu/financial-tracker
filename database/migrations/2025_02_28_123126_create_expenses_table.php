@@ -14,6 +14,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->date('date');
             $table->decimal('amount', 10, 2);
+            $table->decimal('savings', 10, 2)->default(0);
             $table->text('description');
             $table->timestamps();
         });

@@ -24,7 +24,7 @@
             <div class="flex justify-between items-center">
                 <button type="submit"
                     class="bg-blue-400 text-white mt-3 mb-1 font-semibold w-12 h-12 
-                    rounded-full flex items-center justify-center hover:bg-blue-300">
+                    rounded-full flex items-center justify-center hover:bg-blue-300 hover:text-white">
                     Filter
                 </button>
                 @auth
@@ -41,7 +41,7 @@
     <div class="text-left space-y-3">
         @foreach ($incomes as $income)
             <li class="flex justify-between items-center">
-                {{ $income->description }} <br /> $ {{ $income->amount }}
+                {{ $income->description }} <br /> {{ number_format($income->amount, 2) }}
                 <form action="{{ route('incomes.destroy', $income) }}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -52,8 +52,8 @@
 
         <div class="mt-5 bg  bg-gray-300 font-bold flex justify-center p-2 rounded-xl">
             <span class="font-thin mr-3">
-                Sum of Incomes:
-            </span> $
+                Sum of Income:
+            </span>
             {{ number_format($filteredTotalIncome, 2) }}
         </div>
     </div>

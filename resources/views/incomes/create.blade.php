@@ -46,7 +46,7 @@
         @auth
             <div class="flex justify-center mt-4">
                 <button type="submit"
-                    class="bg-blue-400 text-white font-semibold w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-300">
+                    class="bg-blue-400 text-white font-semibold w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-300 hover:text-white">
                     Save
                 </button>
             </div>

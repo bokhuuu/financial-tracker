@@ -15,7 +15,8 @@ class Expense extends Model
         'category_id',
         'amount',
         'date',
-        'description'
+        'description',
+        'savings'
     ];
 
 

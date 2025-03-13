@@ -45,36 +45,44 @@ class ExpenseController extends Controller
             'amount' => 'required|numeric|min:1',
             'date' => 'required|date',
             'category_id' => 'required|exists:categories,id',
-            'description' => 'required|string|min:5|max:255'
+            'description' => 'required|string|min:5|max:255',
+            'savings_percentage' => 'nullable|in:0,1,5,10'
         ]);
+
+        $expenseAmount = $request->amount;
+        $savings = $request->savings_percentage ? ($expenseAmount * $request->savings_percentage) / 100 : 0;
+        $totalDeductionAmount = $expenseAmount + $savings;
 
         $totalIncome = Income::where('user_id', Auth::id())->sum('amount');
         $totalExpense = Expense::where('user_id', Auth::id())->sum('amount');
+        $availableBalance = $totalIncome - $totalExpense;
 
-
-        if (($totalExpense + $request->amount) > $totalIncome) {
+        if ($totalDeductionAmount > $availableBalance) {
             return redirect()->route('expenses.create')
-                ->with('error', "You cannot exceed yout total income: $ $totalIncome")
+                ->with('error', "Not enough balance! Available: " . number_format($availableBalance, 2))
                 ->withInput();
         }
 
         Expense::create([
             'user_id' => Auth::id(),
             'category_id' => $request->category_id,
-            'amount' => $request->amount,
+            'amount' => $expenseAmount,
             'date' => $request->date,
-            'description' => $request->description
+            'description' => $request->description,
+            'savings' => $savings
         ]);
 
         return redirect()->route('expenses.index')
-            ->with('success', 'Expense added');
+            ->with('success', 'Expense added successfully');
     }
 
 
     public function destroy(Expense $expense)
     {
+        $deletedSavings = $expense->savings;
         $expense->delete();
 
-        return redirect()->route('expenses.index')->with('success', 'Expense deleted');
+        return redirect()->route('expenses.index')
+            ->with('success', "Expense deleted. Note: $deletedSavings was also deducted from your Piggy Bank");
     }
 }

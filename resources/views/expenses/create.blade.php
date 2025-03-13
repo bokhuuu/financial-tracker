@@ -18,7 +18,7 @@
 
         <div class="mb-4">
             <label for="amount" class="block font-thin mb-1 text-left">Amount:</label>
-            <input type="number" name="amount" id="amount" step="1" min="1" value="{{ old('amount') }}"
+            <input type="number" name="amount" id="amount" step="0.01" min="0.01" value="{{ old('amount') }}"
                 class="w-full p-2 rounded-lg border @error('amount') border-red-500 @enderror">
             @error('amount')
                 <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
@@ -51,6 +51,16 @@
         </div>
 
         <div class="mb-4">
+            <label for="savings" class="block font-thin mb-1 text-left">Savings Percentage:</label>
+            <select name="savings_percentage" id="savings" class="w-full p-2 rounded-lg border">
+                <option value="0" {{ old('savings_percentage') == 0 ? 'selected' : '' }}>No savings</option>
+                <option value="1" {{ old('savings_percentage') == 1 ? 'selected' : '' }}>1%</option>
+                <option value="5" {{ old('savings_percentage') == 5 ? 'selected' : '' }}>5%</option>
+                <option value="10" {{ old('savings_percentage') == 10 ? 'selected' : '' }}>10%</option>
+            </select>
+        </div>
+
+        <div class="mb-4">
             <label for="description" class="block font-thin mb-1 text-left">Description:</label>
             <input type="text" name="description" id="description" value="{{ old('description') }}"
                 class="w-full p-2 rounded-lg border @error('description') border-red-500 @enderror">
@@ -62,7 +72,7 @@
         @auth
             <div class="flex justify-center mt-4">
                 <button type="submit"
-                    class="bg-blue-400 text-white font-semibold w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-300">
+                    class="bg-blue-400 text-white font-semibold w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-300 hover:text-white">
                     Save
                 </button>
             </div>
